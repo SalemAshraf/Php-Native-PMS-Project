@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Salem",
+        "role" : "admin",
+        "email": "salemashraf2002@gmail.com",
+        "password": "$2y$10$d7rHeg03g5kHzyGjqAXLlehCdDg3pDrGsQLnrYZv7natLpxyF65iq"
+    },
+    {
+        "id": 2,
+        "name": "Salem",
+        "role" : "vendor",
+        "email": "salemashraf2003@gmail.com",
+        "password": "$2y$10$d7rHeg03g5kHzyGjqAXLlehCdDg3pDrGsQLnrYZv7natLpxyF65iq"
+    },
+    {
+        "id": 3,
+        "name": "Salem",
+        "role" : "user",
+        "email": "salemashraf2004@gmail.com",
+        "password": "$2y$10$d7rHeg03g5kHzyGjqAXLlehCdDg3pDrGsQLnrYZv7natLpxyF65iq"
+    }
+]
