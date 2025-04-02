@@ -2,7 +2,8 @@
 
 session_start();
 
-$ordersfile = realpath(__DIR__ . "/../orders.json");
+$ordersfile = realpath(__DIR__ . "/../data/orders.json");
+
 function getOrdersData()
 {
     $orderDatajson = $GLOBALS['ordersfile'];

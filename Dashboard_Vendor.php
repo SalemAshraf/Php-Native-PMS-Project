@@ -1,67 +1,89 @@
 <?php
 require_once('inc/header.php');
 require_once('core/functions.php');
-require_once('core/DashboardFun.php');
-session_start();
+require_once('core/VendorFun.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة التحكم - الطلبات</title>
+    <title>Vendor Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body>
+<div class="container mt-4">
+    <h2 class="text-center">Vendor Dashboard</h2>
 
-    <div class="container mt-5">
-        <h2 class="mb-4 text-center"> Vendor Dashboard </h2>
-
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                Orders
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered text-center">
-                    <thead class="table-dark">
-                        <tr>
-                        <th>رقم الطلب</th>
-            <th>العميل</th>
-            <th>المنتجات</th>
-            <th>المجموع</th>
-            <th>التاريخ</th>
-            <th>الحالة</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-            foreach (getOrdersData() as $order) {
-                $productNames = array_map(function($item) {
-                    return $item['name'];
-                }, $order['items']);
-    
-                $productsString = implode(", ", $productNames);
-    
-                echo "<tr>
-                    <td>{$order['id']}</td>
-                    <td>{$order['name']}</td>
-                    <td>{$productsString}</td>
-                    <td>{$order['total']}</td>
-                    <td>{$order['date']}</td>
-                    <td><span class='badge bg-success'>مكتمل</span></td>
-                </tr>";
-            }
-                    ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        
+    <!-- إضافة منتج جديد -->
+    <div class="card p-3 mb-3">
+        <h4>Add New Product</h4>
+        <form method="POST">
+            <input type="text" name="name" class="form-control mb-2" placeholder="Product Name" required>
+            <input type="number" name="price" class="form-control mb-2" placeholder="Price" required>
+            <input type="text" name="category" class="form-control mb-2" placeholder="Category" required>
+            <button type="submit" name="add_product" class="btn btn-primary">Add</button>
+        </form>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- قائمة المنتجات -->
+    <h4>Our Products</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach (getVendorProducts($vendor_id) as $product): ?>
+                <tr>
+                    <td><?= $product['id'] ?></td>
+                    <td><?= htmlspecialchars($product['name']) ?></td>
+                    <td><?= htmlspecialchars($product['price']) ?></td>
+                    <td><?= htmlspecialchars($product['category']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+            
+        </tbody>
+    </table>
+
+    <!-- قائمة الطلبات -->
+    <h4>Orders List</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Client</th>
+                <th>Products</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach (getVendorOrders($vendor_id) as $order): ?>
+                <tr>
+                    <td><?= $order['id'] ?></td>
+                    <td><?= htmlspecialchars($order['name']) ?></td>
+                    <td>
+                        <?php 
+                            $productNames = array_map(fn($item) => $item['name'], $order['items']);
+                            echo implode(", ", $productNames);
+                        ?>
+                    </td>
+                    <td><?= htmlspecialchars($order['total']) ?></td>
+                    <td><?= htmlspecialchars($order['date']) ?></td>
+                    <td><span class="badge bg-success">مكتمل</span></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+</div>
 </body>
 </html>
 

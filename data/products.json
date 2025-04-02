@@ -1,21 +1,29 @@
 [
     {
-        "id": 2,
-        "Vid": 2,
+        "id": 1,
+        "user_id": 2,
         "name": "Pixie Machine",
-        "price": 16499.00,
-        "image": "/Php%20Native/assets/images/nespresso-pixie-electric-red_4_1.avif"
+        "price": 16499,
+        "category": "Machine",
+        "image": "\/Php%20Native\/assets\/images\/nespresso-pixie-electric-red_4_1.avif"
+    },
+    {
+        "id": 2,
+        "name": "Lattissima One",
+        "price": 24999,
+        "image": "\/Php%20Native\/assets\/images\/lat1-white-20230814-143615_2.avif"
     },
     {
         "id": 3,
-        "name": "Lattissima One",
-        "price": 24999.00,
-        "image": "/Php%20Native/assets/images/lat1-white-20230814-143615_2.avif"
+        "name": "Essenza Mini",
+        "price": 12999,
+        "image": "\/Php%20Native\/assets\/images\/nespresso-essenza-mini-c-white_1.avif"
     },
     {
         "id": 4,
-        "name": "Essenza Mini",
-        "price": 12999.00,
-        "image": "/Php%20Native/assets/images/nespresso-essenza-mini-c-white_1.avif"
+        "user_id": 2,
+        "name": "Noon Esspreso",
+        "price": "4599",
+        "category": "Machine"
     }
 ]

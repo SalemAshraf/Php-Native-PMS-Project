@@ -2,7 +2,15 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $file = realpath(__DIR__ . "/../data/orders.json");
+
+    $orders = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
+
+    $newId = empty($orders) ? 1 : max(array_column($orders, 'id')) + 1;
+
     $order = [
+        "id"    => $newId,
         "name"    => $_POST["name"],
         "email"   => $_POST["email"],
         "address" => $_POST["address"],
@@ -15,20 +23,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "date"    => date("Y-m-d H:i:s") 
     ];
 
-    $file = realpath(__DIR__ . "/orders.json");
-
-    $orders = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
-
     $orders[] = $order;
 
     file_put_contents($file, json_encode($orders, JSON_PRETTY_PRINT));
 
     unset($_SESSION["cart"]);
-
-    header("Location: Dashboard.php");
+    
+    if ($_SESSION['user']['role'] == 'admin'){
+        header("Location: ../Dashboard_Admin.php");
+    } elseif($_SESSION['user']['role'] == 'vendor'){
+        header("Location: ../Dashboard_vendor.php");
+    } else {
+        header("Location: ../Dashboard.php");
+    }
+    
     exit();
 } else {
-    header("Location: checkout.php");
+    header("Location: ../checkout.php");
     exit();
 }
-?>

@@ -17,6 +17,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
         } else {
             $_SESSION['cart'][$product_id] = [
                 'name' => $product['name'],
+                "user_id" => $_SESSION['user']['id'],
                 'price' => $product['price'],
                 'image' => $product['image'],
                 'quantity' => 1

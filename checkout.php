@@ -41,7 +41,7 @@ require_once('inc/header.php');
 
             <!-- نموذج إدخال بيانات العميل -->
             <div class="col-8">
-                <form action="process_order.php" method="POST" class="border p-3">
+                <form action="./core/process_order.php" method="POST" class="border p-3">
                     <div class="mb-3">
                         <label>Name</label>
                         <input type="text" name="name" class="form-control" required>

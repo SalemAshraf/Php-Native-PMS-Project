@@ -32,7 +32,7 @@ function registerUser($name,$email,$password) {
         $users = [];
     }
 
-    $newId = empty($users) ? 1 : max(array_column($users,'id')) + 1;
+    $newId = empty($users) ? 1 : max(array_column($users,column_key: 'id')) + 1;
 
     $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
 
@@ -64,6 +64,7 @@ function loginUser($email,$password){
     foreach($users as $user){
         if($user['email'] == $email && password_verify($password,$user['password'])){
             $_SESSION['user'] = [
+                'id' => $user['id'],
                 'name' => $user['name'],
                 'email' =>  $user['email'],
                 'role' =>  $user['role']

@@ -1,0 +1,28 @@
+[
+    {
+        "id": 1,
+        "name": "Salem Ashraf Khudair",
+        "email": "salemashrafKhudair@gmail.com",
+        "address": "Alexandria",
+        "phone": "01098971853",
+        "notes": "",
+        "items": {
+            "2": {
+                "name": "Lattissima One",
+                "user_id": 2,
+                "price": 24999,
+                "image": "\/Php%20Native\/assets\/images\/lat1-white-20230814-143615_2.avif",
+                "quantity": 1
+            },
+            "3": {
+                "name": "Essenza Mini",
+                "user_id": 2,
+                "price": 12999,
+                "image": "\/Php%20Native\/assets\/images\/nespresso-essenza-mini-c-white_1.avif",
+                "quantity": 1
+            }
+        },
+        "total": 37998,
+        "date": "2025-03-29 20:54:21"
+    }
+]
