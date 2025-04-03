@@ -1,5 +1,8 @@
 # Admin Dashboard - PHP & Bootstrap
 
+![WhatsApp Image 2025-03-28 at 00 19 19](https://github.com/user-attachments/assets/72932a9e-ae87-438c-b276-40d7771914df)
+
+
 ## 📌 Project Overview
 This is a simple **Admin Dashboard** built with **PHP** and **Bootstrap**. It allows administrators to manage users, products, and orders using a tab-based navigation system.
 
@@ -10,6 +13,9 @@ This is a simple **Admin Dashboard** built with **PHP** and **Bootstrap**. It al
   - 👤 **Users** - List all registered users
   - 🛒 **Products** - Manage and view all available products
   - 📦 **Orders** - Track order status
+ 
+![WhatsApp Image 2025-03-29 at 22 03 03](https://github.com/user-attachments/assets/c7cae0a6-abd3-4f22-81fa-de7bb6c2a1fd)
+
 
 ## 🛠️ Technologies Used
 - **PHP** - Backend logic & session handling
